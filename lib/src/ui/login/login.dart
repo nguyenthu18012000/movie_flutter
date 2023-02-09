@@ -127,8 +127,6 @@ class OtherLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(text);
-    // String s = text is String ? 'aaaaa' : 'alksjdfhlakjsdhf';
     return Container(
       margin: const EdgeInsets.only(right: 20, left: 20, bottom: 15),
       decoration: BoxDecoration(
@@ -137,7 +135,6 @@ class OtherLogin extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          print(text);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
