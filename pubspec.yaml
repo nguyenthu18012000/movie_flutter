@@ -13,6 +13,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
+  http: ^0.13.5
+  json_serializable: ^6.6.1
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.5
+  firebase_core: ^2.5.0
+  firebase_auth: ^4.2.6
+  google_sign_in: ^5.4.4
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +38,4 @@ flutter:
     - lib/assets/images/google.png
     - lib/assets/images/apple.png
     - lib/assets/images/movie_logo.png
+    - lib/assets/images/poster_demo.jpeg

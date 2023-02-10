@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_flutter/src/ui/home/home.dart';
 import 'package:movie_flutter/src/ui/login/login.dart';
 
 class LoginForm extends StatelessWidget {
@@ -114,9 +115,8 @@ class LoginForm extends StatelessWidget {
                         )),
                   ),
                   onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (_) => const LoginForm()));
-                    print('object');
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const Home()));
                   },
                 ),
                 Container(

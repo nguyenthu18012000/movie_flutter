@@ -1,4 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_flutter/src/blocs/popular_movies_bloc/bloc/popular_movies_bloc.dart';
+import 'package:movie_flutter/src/models/movie_popular_model.dart';
 import 'package:movie_flutter/src/ui/login/login.dart';
 
 void main() {
@@ -8,14 +12,29 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  void initState() async {
+    await Firebase.initializeApp();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    initState();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (
+            (context) => PopularMoviesBloc()..add(LoadedPopularMoviesEvent(MoviePopularModel()))
+          )
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const Login(),
       ),
-      home: const Login(),
     );
   }
 }

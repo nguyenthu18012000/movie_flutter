@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:movie_flutter/services/auth_service.dart';
 import 'package:movie_flutter/src/ui/login/login_form.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +40,19 @@ class Login extends StatelessWidget {
                   OtherLogin(
                     text: "Continue with FaceBook",
                     icon: 'lib/assets/images/facebook.png',
+                    onTap: () {},
                   ),
-                  OtherLogin(
-                    text: "Continue with Google",
-                    icon: 'lib/assets/images/google.png',
+                  InkWell(
+                    child: OtherLogin(
+                      text: "Continue with Google",
+                      icon: 'lib/assets/images/google.png',
+                      onTap: () => AuthService().signInWithGoogle(),
+                    ),
                   ),
                   OtherLogin(
                     text: "Continue with Apple",
                     icon: 'lib/assets/images/apple.png',
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -122,13 +129,12 @@ class Login extends StatelessWidget {
 class OtherLogin extends StatelessWidget {
   String text;
   String icon;
+  Function() onTap;
 
-  OtherLogin({super.key, required this.text, required this.icon});
+  OtherLogin({super.key, required this.text, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    print(text);
-    // String s = text is String ? 'aaaaa' : 'alksjdfhlakjsdhf';
     return Container(
       margin: const EdgeInsets.only(right: 20, left: 20, bottom: 15),
       decoration: BoxDecoration(
@@ -137,7 +143,7 @@ class OtherLogin extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          print(text);
+          onTap();
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
