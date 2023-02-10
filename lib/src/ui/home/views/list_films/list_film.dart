@@ -44,11 +44,11 @@ class ListFilm extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 240,
+            height: 200,
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
-                childAspectRatio: 1.6,
+                childAspectRatio: 1.5,
                 mainAxisSpacing: 10,
               ),
               scrollDirection: Axis.horizontal,

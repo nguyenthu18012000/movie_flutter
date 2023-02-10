@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        shrinkWrap: true,
+        padding: EdgeInsets.zero,
         clipBehavior: Clip.none,
         children: [
             Stack(
@@ -82,40 +82,6 @@ class HomeScreen extends StatelessWidget {
             ListFilm(title: "New Releases", listFirm: state.moviePopular.results),
         ],
       ),
-      // body: Column(
-      //   children: [
-      //     Stack(
-      //       children: [
-      //         const BannerHome(),
-      //         Padding(
-      //           padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
-      //           child: Row(
-      //             mainAxisAlignment: MainAxisAlignment.end,
-      //             children: const [
-      //               Image(
-      //                 height: 30,
-      //                 image: AssetImage("lib/assets/images/movie_logo.png"),
-      //               ),
-      //               Expanded(child: Text('')),
-      //               Icon(
-      //                 Icons.search,
-      //                 size: 35,
-      //                 color: Colors.white,
-      //               ),
-      //               Icon(
-      //                 Constants.bell,
-      //                 size: 35,
-      //                 color: Colors.white,
-      //               )
-      //             ],
-      //           ),
-      //         ),
-      //       ]
-      //     ),
-      //     const ListFilm(),
-      //     const ListFilm(),
-      //   ],
-      // ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

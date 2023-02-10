@@ -10,16 +10,24 @@ class FilmItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image(
-          image: NetworkImage("${Constants.imageUrl}/${film.posterPath}"),
-          fit: BoxFit.contain,
-          alignment: Alignment.topCenter,
+        ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          child: Image.network("${Constants.imageUrl}/${film.posterPath}"),
         ),
-        Text(
-          "${film.voteAverage}",
-          style: const TextStyle(
-            color: Colors.white,
-            backgroundColor: Colors.red,
+        Container(
+          margin: EdgeInsets.all(10),
+          padding: EdgeInsets.only(left: 5, right: 5, top: 2, bottom: 2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(width: 1, color: Colors.red),
+            color: Colors.red,
+          ),
+          child: Text(
+            "${film.voteAverage}",
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12
+            ),
           ),
         )
       ],
