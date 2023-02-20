@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movie_flutter/src/models/movie_popular_model.dart';
-import 'package:movie_flutter/src/ui/home/views/list_films/view/film_item/film_item.dart';
+import 'package:movie_flutter/src/ui/film_item/film_item.dart';
+import 'package:movie_flutter/src/ui/list_film/list_film.dart';
 
-class ListFilm extends StatelessWidget {
+class ListFilmHome extends StatelessWidget {
   final String title;
-  List<Results>? listFirm;
-  ListFilm({super.key, required this.title, required this.listFirm});
+  final List<Results>? listFilm;
+  const ListFilmHome({super.key, required this.title, required this.listFilm});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ListFilm extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "$title",
+                  title,
                   style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600
@@ -28,17 +29,25 @@ class ListFilm extends StatelessWidget {
                 ),
                 const Expanded(child: Text("")),
                 InkWell(
-                  child: const Text(
-                    "See all",
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ListFilm(listFilm: listFilm)
+                        )
+                      );
+                    },
+                    child: const Text(
+                      "See all",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600
+                      ),
                     ),
                   ),
-                  onTap: () {
-                    print(title);
-                  },
+                  onTap: () {},
                 )
               ],
             ),
@@ -52,15 +61,7 @@ class ListFilm extends StatelessWidget {
                 mainAxisSpacing: 10,
               ),
               scrollDirection: Axis.horizontal,
-              children: listFirm!.map((film) => FilmItem(film: film,)).toList()
-              // [
-              //   FilmItem(),
-              //   FilmItem(),
-              //   FilmItem(),
-              //   FilmItem(),
-              //   FilmItem()
-              //
-              // ],
+              children: listFilm!.map((film) => FilmItem(film: film,)).toList(),
             ),
           ),
         ]

@@ -5,7 +5,6 @@ import 'package:movie_flutter/src/ui/login/login_form.dart';
 class Login extends StatelessWidget {
   const Login({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

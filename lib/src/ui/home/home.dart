@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_flutter/cores/constants.dart';
 import 'package:movie_flutter/src/blocs/popular_movies_bloc/bloc/popular_movies_bloc.dart';
+import 'package:movie_flutter/src/resources/repositories.dart';
 import 'package:movie_flutter/src/ui/home/views/banner_home/banner_home.dart';
-import 'package:movie_flutter/src/ui/home/views/list_films/list_film.dart';
+import 'package:movie_flutter/src/ui/home/views/list_films_home/list_film_home.dart';
+import 'package:movie_flutter/src/ui/notifications/notifications.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -57,29 +59,41 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Image(
+                    children: [
+                      const Image(
                         height: 30,
                         image: AssetImage("lib/assets/images/movie_logo.png"),
                       ),
-                      Expanded(child: Text('')),
-                      Icon(
+                      const Expanded(child: Text('')),
+                      const Icon(
                         Icons.search,
                         size: 35,
                         color: Colors.white,
                       ),
-                      Icon(
-                        Constants.bell,
-                        size: 35,
-                        color: Colors.white,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => Notifications(
+                                listNotification: state.moviePopular.results,
+                              )
+                            )
+                          );
+                        },
+                        child: const Icon(
+                          Constants.bell,
+                          size: 35,
+                          color: Colors.white,
+                        ),
                       )
                     ],
                   ),
                 ),
               ]
             ),
-            ListFilm(title: "Top 10 Movies this week", listFirm: state.moviePopular.results),
-            ListFilm(title: "New Releases", listFirm: state.moviePopular.results),
+            ListFilmHome(title: "Top 10 Movies this week", listFilm: state.moviePopular.results),
+            ListFilmHome(title: "New Releases", listFilm: state.moviePopular.results),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
