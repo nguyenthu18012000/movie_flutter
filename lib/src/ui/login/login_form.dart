@@ -88,9 +88,7 @@ class LoginForm extends StatelessWidget {
                           Checkbox(
                             value: false,
                             fillColor: MaterialStateProperty.all(Colors.red),
-                            onChanged: (bool? value) {
-                              print(value);
-                            },
+                            onChanged: (bool? value) {},
                           ),
                           const Text(
                             "Remember me",

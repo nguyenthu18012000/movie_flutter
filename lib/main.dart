@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_flutter/src/blocs/detail_movie_bloc/detail_movie_bloc.dart';
 import 'package:movie_flutter/src/blocs/popular_movies_bloc/bloc/popular_movies_bloc.dart';
 import 'package:movie_flutter/src/models/movie_popular_model.dart';
 import 'package:movie_flutter/src/ui/login/login.dart';
@@ -22,9 +23,16 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (
-            (context) => PopularMoviesBloc()..add(LoadedPopularMoviesEvent(MoviePopularModel()))
-          )
+          create:
+            (context) => PopularMoviesBloc()..add(
+              LoadedPopularMoviesEvent(MoviePopularModel())
+            )
+        ),
+        BlocProvider(
+          create:
+            (context) => DetailMovieBloc()..add(
+              const LoadedDetailMovieEvent(idMovie: 238)
+            )
         ),
       ],
       child: MaterialApp(

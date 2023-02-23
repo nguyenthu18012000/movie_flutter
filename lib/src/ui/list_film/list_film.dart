@@ -56,7 +56,9 @@ class ListFilm extends StatelessWidget {
                   ),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  children: listFilm!.map((film) => FilmItem(film: film,)).toList(),
+                  children: listFilm!.map((film) => FilmItem(
+                    film: film,
+                  )).toList(),
                 ),
               ),
             )

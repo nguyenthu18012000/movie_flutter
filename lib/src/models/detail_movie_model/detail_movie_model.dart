@@ -5,57 +5,57 @@ part 'detail_movie_model.g.dart';
 @JsonSerializable()
 class DetailMovieModel {
   bool? adult;
-  String? backdropPath;
-  BelongsToCollection? belongsToCollection;
+  String? backdrop_path;
+  BelongsToCollection? belongs_to_collection;
   int? budget;
   List<Genres>? genres;
   String? homepage;
   int? id;
-  String? imdbId;
-  String? originalLanguage;
-  String? originalTitle;
+  String? imdb_id;
+  String? original_language;
+  String? original_title;
   String? overview;
   double? popularity;
-  String? posterPath;
-  List<ProductionCompanies>? productionCompanies;
-  List<ProductionCountries>? productionCountries;
-  String? releaseDate;
+  String? poster_path;
+  List<ProductionCompanies>? production_companies;
+  List<ProductionCountries>? production_countries;
+  String? release_date;
   int? revenue;
   int? runtime;
-  List<SpokenLanguages>? spokenLanguages;
+  List<SpokenLanguages>? spoken_languages;
   String? status;
   String? tagline;
   String? title;
   bool? video;
-  double? voteAverage;
-  int? voteCount;
+  double? vote_average;
+  int? vote_count;
 
   DetailMovieModel(
       {this.adult,
-        this.backdropPath,
-        this.belongsToCollection,
+        this.backdrop_path,
+        this.belongs_to_collection,
         this.budget,
         this.genres,
         this.homepage,
         this.id,
-        this.imdbId,
-        this.originalLanguage,
-        this.originalTitle,
+        this.imdb_id,
+        this.original_language,
+        this.original_title,
         this.overview,
         this.popularity,
-        this.posterPath,
-        this.productionCompanies,
-        this.productionCountries,
-        this.releaseDate,
+        this.poster_path,
+        this.production_companies,
+        this.production_countries,
+        this.release_date,
         this.revenue,
         this.runtime,
-        this.spokenLanguages,
+        this.spoken_languages,
         this.status,
         this.tagline,
         this.title,
         this.video,
-        this.voteAverage,
-        this.voteCount});
+        this.vote_average,
+        this.vote_count});
 
   factory DetailMovieModel.fromJson(Map<String, dynamic> json) => _$DetailMovieModelFromJson(json);
 
@@ -67,10 +67,10 @@ class DetailMovieModel {
 class BelongsToCollection {
   int? id;
   String? name;
-  String? posterPath;
-  String? backdropPath;
+  String? poster_path;
+  String? backdrop_path;
 
-  BelongsToCollection({this.id, this.name, this.posterPath, this.backdropPath});
+  BelongsToCollection({this.id, this.name, this.poster_path, this.backdrop_path});
 
   factory BelongsToCollection.fromJson(Map<String, dynamic> json) => _$BelongsToCollectionFromJson(json);
 
@@ -92,11 +92,11 @@ class Genres {
 @JsonSerializable()
 class ProductionCompanies {
   int? id;
-  String? logoPath;
+  String? logo_path;
   String? name;
-  String? originCountry;
+  String? origin_country;
 
-  ProductionCompanies({this.id, this.logoPath, this.name, this.originCountry});
+  ProductionCompanies({this.id, this.logo_path, this.name, this.origin_country});
 
   factory ProductionCompanies.fromJson(Map<String, dynamic> json) => _$ProductionCompaniesFromJson(json);
 
@@ -105,10 +105,10 @@ class ProductionCompanies {
 
 @JsonSerializable()
 class ProductionCountries {
-  String? iso31661;
+  String? iso_3166_1;
   String? name;
 
-  ProductionCountries({this.iso31661, this.name});
+  ProductionCountries({this.iso_3166_1, this.name});
 
   factory ProductionCountries.fromJson(Map<String, dynamic> json) => _$ProductionCountriesFromJson(json);
 
@@ -118,11 +118,11 @@ class ProductionCountries {
 
 @JsonSerializable()
 class SpokenLanguages {
-  String? englishName;
-  String? iso6391;
+  String? english_name;
+  String? iso_639_1;
   String? name;
 
-  SpokenLanguages({this.englishName, this.iso6391, this.name});
+  SpokenLanguages({this.english_name, this.iso_639_1, this.name});
 
   factory SpokenLanguages.fromJson(Map<String, dynamic> json) => _$SpokenLanguagesFromJson(json);
 

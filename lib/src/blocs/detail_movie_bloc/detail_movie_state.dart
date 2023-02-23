@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:movie_flutter/src/models/detail_movie_model/detail_movie_model.dart';
+part of 'detail_movie_bloc.dart';
 
 abstract class DetailMovieState extends Equatable {
   const DetailMovieState();

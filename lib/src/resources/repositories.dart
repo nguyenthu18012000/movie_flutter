@@ -8,5 +8,5 @@ class Repositories {
   final detailMovieApi = DetailMovieApi();
 
   Future<MoviePopularModel> getPopularMovies() => moviePopularApi.getPopularMovie();
-  Future<DetailMovieModel> getDetailMovie() => detailMovieApi.getDetailMovie(238);
+  Future<DetailMovieModel> getDetailMovie(int idMovie) => detailMovieApi.getDetailMovie(idMovie);
 }

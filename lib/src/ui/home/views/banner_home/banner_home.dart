@@ -25,7 +25,6 @@ class BannerHome extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Expanded(child: Text('')),
                 Container(
                   height: 270,
                 ),

@@ -152,8 +152,8 @@ class OtherLogin extends StatelessWidget {
               height: 60,
             ),
             Text(
-              "$text",
-              style: TextStyle(
+              text,
+              style: const TextStyle(
                 fontSize: 19,
                 height: 1,
                 fontWeight: FontWeight.bold,

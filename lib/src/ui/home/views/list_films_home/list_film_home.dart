@@ -61,7 +61,9 @@ class ListFilmHome extends StatelessWidget {
                 mainAxisSpacing: 10,
               ),
               scrollDirection: Axis.horizontal,
-              children: listFilm!.map((film) => FilmItem(film: film,)).toList(),
+              children: listFilm!.map((film) => FilmItem(
+                film: film,
+              )).toList(),
             ),
           ),
         ]

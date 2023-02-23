@@ -12,8 +12,6 @@ class AuthService {
       idToken: gAuth.idToken,
     );
 
-    final user = FirebaseAuth.instance.currentUser;
-    print(user);
     return FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

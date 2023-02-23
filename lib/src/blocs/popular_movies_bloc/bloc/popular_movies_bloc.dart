@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_flutter/src/models/movie_popular_model.dart';
@@ -12,10 +11,13 @@ class PopularMoviesBloc extends Bloc<PopularMoviesEvent, PopularMoviesState> {
     on<LoadedPopularMoviesEvent>(_onLoadPopularMoviesEvent);
   }
 
-  void _onLoadPopularMoviesEvent(LoadedPopularMoviesEvent event, Emitter<PopularMoviesState> emit) async {
-    MoviePopularModel s = await Repositories().getPopularMovies();
+  void _onLoadPopularMoviesEvent(
+      LoadedPopularMoviesEvent event,
+      Emitter<PopularMoviesState> emit
+  ) async {
+    MoviePopularModel popularMovie = await Repositories().getPopularMovies();
     emit(
-      LoadedPopularMoviesState(s)
+      LoadedPopularMoviesState(popularMovie)
     );
   }
 }

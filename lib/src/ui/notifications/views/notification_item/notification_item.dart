@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_flutter/cores/constants.dart';
 import 'package:movie_flutter/src/models/movie_popular_model.dart';
