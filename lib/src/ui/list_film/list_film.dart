@@ -4,8 +4,9 @@ import 'package:movie_flutter/src/ui/film_item/film_item.dart';
 import 'package:movie_flutter/src/ui/home/home.dart';
 
 class ListFilm extends StatelessWidget {
+  final bool isHasAppbar;
   final List<Results>? listFilm;
-  const ListFilm({super.key, this.listFilm});
+  const ListFilm({super.key,required this.isHasAppbar, this.listFilm});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,8 @@ class ListFilm extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
+            isHasAppbar
+            ? SizedBox(
               height: 60,
               child: Row(
                 children: [
@@ -43,7 +45,8 @@ class ListFilm extends StatelessWidget {
                   )
                 ],
               ),
-            ),
+            )
+            : const Text(""),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

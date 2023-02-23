@@ -43,3 +43,4 @@ flutter:
     - lib/assets/images/apple.png
     - lib/assets/images/movie_logo.png
     - lib/assets/images/poster_demo.jpeg
+    - lib/assets/images/alert.png

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_flutter/cores/constants.dart';
 import 'package:movie_flutter/src/blocs/detail_movie_bloc/detail_movie_bloc.dart';
+import 'package:movie_flutter/src/blocs/popular_movies_bloc/bloc/popular_movies_bloc.dart';
 import 'package:movie_flutter/src/models/detail_movie_model/detail_movie_model.dart';
+import 'package:movie_flutter/src/ui/list_film/list_film.dart';
+import 'package:movie_flutter/src/ui/notifications/notifications.dart';
 import 'package:readmore/readmore.dart';
 
 class DetailMovie extends StatelessWidget {
@@ -111,9 +114,56 @@ class _DetailMovie extends StatelessWidget {
                         )
                       ),
                       IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+                        onPressed: () => showDialog(
+                            barrierDismissible: true,
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20))
+                              ),
+                              content: SizedBox(
+                                height: 380,
+                                child: Column(
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 50,
+                                            vertical: 30
+                                        ),
+                                        child: const Image(
+                                          image: AssetImage("lib/assets/images/alert.png"),
+                                        ),
+                                      ),
+                                      const Center(
+                                        child: Text(
+                                          "Congratulations!",
+                                          style: TextStyle(
+                                              color: Colors.red,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 20
+                                          ),
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 20),
+                                        child: Center(
+                                          child: Text(
+                                            "You shared this film. You will be redirected to the Alert dialog.",
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                      const CircularProgressIndicator(
+                                          color: Colors.red
+                                      )
+                                    ]
+                                ),
+                              ),
+                            ),
+                        ),
                         icon: const Icon(
                           Icons.mobile_screen_share_sharp,
                         )
@@ -262,7 +312,7 @@ class _DetailMovie extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                   child: Text(
                     getListGenre(),
                     style: const TextStyle(
@@ -282,7 +332,10 @@ class _DetailMovie extends StatelessWidget {
                     fontWeight: FontWeight.w500
                   ),
                 ),
-                // const TabBarDetail(),
+                Container(
+                  height: 300,
+                    child: const TabBarDetail()
+                ),
               ],
             ),
           ),
@@ -313,36 +366,93 @@ class _TabBarDetail extends State<TabBarDetail>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        bottom: TabBar(
-          // controller: _tabController,
-          tabs: const <Widget>[
-            Tab(
-              icon: Icon(Icons.cloud_outlined),
-            ),
-            Tab(
-              icon: Icon(Icons.beach_access_sharp),
-            ),
-            Tab(
-              icon: Icon(Icons.brightness_5_sharp),
-            ),
-          ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          bottom: TabBar(
+            controller: _tabController,
+            unselectedLabelColor: Colors.grey,
+            labelColor: Colors.red,
+            indicatorColor: Colors.red,
+            isScrollable: true,
+            tabs: const <Widget>[
+              FittedBox(
+                child: Tab(
+                  text: "Trailers",
+                ),
+              ),
+              FittedBox(
+                child: Tab(
+                  text: "More Like This",
+                ),
+              ),
+              FittedBox(
+                child: Tab(
+                  text: "Comments",
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: TabBarView(
         controller: _tabController,
         children: const <Widget>[
+          Trailer(),
+          MoreLikeThis(),
           Center(
-            child: Text("It's cloudy here"),
-          ),
-          Center(
-            child: Text("It's rainy here"),
-          ),
-          Center(
-            child: Text("It's sunny here"),
+            child: Text("comment"),
           ),
         ],
       ),
+    );
+  }
+}
+
+class MoreLikeThis extends StatelessWidget {
+  const MoreLikeThis({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
+      builder: (context, state) {
+        if (state is LoadedPopularMoviesState) {
+          return ListFilm(isHasAppbar: false, listFilm: state.moviePopular.results,);
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+}
+
+class Trailer extends StatelessWidget {
+  const Trailer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PopularMoviesBloc, PopularMoviesState>(
+      builder: (context, state) {
+        if (state is LoadedPopularMoviesState) {
+          return Notifications(
+              isHasAppbar: false,
+            listNotification: state.moviePopular.results
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

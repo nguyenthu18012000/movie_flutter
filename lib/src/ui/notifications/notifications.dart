@@ -4,8 +4,9 @@ import 'package:movie_flutter/src/ui/home/home.dart';
 import 'package:movie_flutter/src/ui/notifications/views/notification_item/notification_item.dart';
 
 class Notifications extends StatelessWidget {
+  final bool isHasAppbar;
   final List<Results>? listNotification;
-  const Notifications({super.key, required this.listNotification});
+  const Notifications({super.key, required this.isHasAppbar, required this.listNotification});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,8 @@ class Notifications extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Row(
+            isHasAppbar
+            ? Row(
               children: [
                 IconButton(
                     onPressed: () {
@@ -38,7 +40,8 @@ class Notifications extends StatelessWidget {
                   icon: const Icon(Icons.more_horiz_rounded)
                 )
               ],
-            ),
+            )
+            : const Text(""),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(10),

@@ -34,7 +34,7 @@ class ListFilmHome extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (_) => ListFilm(listFilm: listFilm)
+                            builder: (_) => ListFilm(isHasAppbar: true, listFilm: listFilm)
                         )
                       );
                     },

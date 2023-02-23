@@ -63,12 +63,14 @@ class HomeScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => Notifications(
-                                    listNotification:
-                                        state.moviePopular.results,
-                                  )));
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => Notifications(
+                            isHasAppbar: true,
+                            listNotification: state.moviePopular.results,
+                          )
+                        )
+                      );
                     },
                     child: const Icon(
                       Constants.bell,
